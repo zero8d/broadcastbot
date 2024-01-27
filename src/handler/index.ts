@@ -21,4 +21,5 @@ handler.callbackQuery(/lang_/, ctx => {
     reply_markup: { inline_keyboard: [] },
   })
 })
+
 handler.command('start', startInit)

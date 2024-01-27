@@ -1,3 +1,3 @@
-welcome-message=Привет! Send me a message
+welcome-message=Привет!
 select-lang=Выберите язык
 selected-lang=Выбран язык {$lang}
