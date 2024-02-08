@@ -29,6 +29,11 @@
     "@deno/shim-deno-test" "^0.3.2"
     which "^2.0.2"
 
+"@grammyjs/auto-retry@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@grammyjs/auto-retry/-/auto-retry-1.1.1.tgz#0391aec411585b30269eaaab7ca10043b099054a"
+  integrity sha512-vaQDl45Unhidi4r5+JrwDKfmPFJuJpAh9YmE38pACcP3TyKnwUMQxQ3bRdl0Y1ME/uBwTm9YiX1pwol0vnubCw==
+
 "@grammyjs/i18n@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@grammyjs/i18n/-/i18n-1.0.1.tgz#c51cef83a656884389b51e665b9524e8248cc4e8"

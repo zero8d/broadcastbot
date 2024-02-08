@@ -7,7 +7,7 @@ export const main = new Composer<MyContext>()
 main.on('message', async ctx => {
   const users = await getAllUsers()
   let sentCount = 0
-  await ctx.reply(ctx.t('main-broadcast-started'))
+  const started = await ctx.reply(ctx.t('main-broadcast-started'))
   for (const userid of users) {
     try {
       await ctx.copyMessage(userid)
@@ -15,11 +15,15 @@ main.on('message', async ctx => {
     } catch (error) {
       await setBlocked(userid)
     }
-    await sleep(500)
+    if (sentCount % 30) {
+      await ctx.api.editMessageText(
+        ctx.chat.id,
+        started.message_id,
+        ctx.t('main-broadcast-finished', { userCount: users.length, sentCount })
+      )
+    }
   }
-  await ctx.reply(
-    ctx.t('main-broadcast-finished', { userCount: users.length, sentCount })
-  )
+  await ctx.reply('🏁')
 })
 export function showLangs(ctx: MyContext) {
   const inlineKeyboard = new InlineKeyboard()
