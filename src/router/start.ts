@@ -9,6 +9,7 @@ export async function startInit(ctx: MyContext) {
   ctx.session.username = ctx.from?.username + ''
   const inlineKeyboard = new InlineKeyboard()
     .url(ctx.t('follow-channel'), channelLink)
+    .row()
     .text(ctx.t('verify-follow'), 'verify_follow')
   ctx.reply(ctx.t('welcome-message'), { reply_markup: inlineKeyboard })
 }

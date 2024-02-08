@@ -15,10 +15,10 @@ export type MyContext = Context & SessionFlavor<SessionData> & I18nFlavor
 const bot = new Bot<MyContext>(<string>process.env.BOTTOKEN)
 connectMongoDB()
 
+bot.api.config.use(autoRetry())
 bot.use(session)
 bot.use(i18n)
 bot.use(handler)
-bot.use(autoRetry())
 bot.use(accessControl)
 bot.use(router)
 bot.start({

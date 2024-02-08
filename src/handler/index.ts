@@ -25,8 +25,12 @@ handler.callbackQuery(/lang_/, ctx => {
 handler.on(':left_chat_member', ctx => {
   ctx.session.blocked = true
 })
-handler.callbackQuery('follow_verify', async ctx => {
-  const member = await ctx.api.getChatMember(-1002057834744, channelId)
+handler.callbackQuery('verify_follow', async ctx => {
+  if (!ctx.chat?.id) {
+    await ctx.answerCallbackQuery('❌')
+    return
+  }
+  const member = await ctx.api.getChatMember(channelId, ctx.chat.id)
   if (member.status === 'kicked' || member.status === 'left') {
     await ctx.answerCallbackQuery('❌')
     return
