@@ -36,7 +36,7 @@ handler.callbackQuery('verify_follow', async ctx => {
     return
   }
   ctx.session.state = 'main'
-
+  ctx.session.blocked = true
   await ctx.editMessageText(ctx.t('verified'), {
     reply_markup: { inline_keyboard: [] },
   })

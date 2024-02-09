@@ -1,4 +1,4 @@
-export const botAdmins = (<string>process.env.BOT_ADMINS)
+export const botAdmins: Array<number> = (<string>process.env.BOT_ADMINS)
   .split(',')
   .map(el => Number(el))
 export const channelId = Number(<string>process.env.CHANNEL_ID)

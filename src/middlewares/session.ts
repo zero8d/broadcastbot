@@ -13,7 +13,7 @@ const collection = mongoose.connection.collection<ISession>('sessions')
 export const session = grammySession({
   initial: (): SessionData => ({
     state: 'start',
-    blocked: false,
+    blocked: true,
     name: '',
     username: '',
   }),

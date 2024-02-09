@@ -8,6 +8,7 @@ main.on('message', async ctx => {
   const users = await getAllUsers()
   let sentCount = 0
   const started = await ctx.reply(ctx.t('main-broadcast-started'))
+  let i = 0
   for (const userid of users) {
     try {
       await ctx.copyMessage(userid)
@@ -15,14 +16,27 @@ main.on('message', async ctx => {
     } catch (error) {
       await setBlocked(userid)
     }
-    if (sentCount % 30) {
+    if (sentCount % 23 === 0) {
+      await sleep(1000)
       await ctx.api.editMessageText(
         ctx.chat.id,
         started.message_id,
-        ctx.t('main-broadcast-finished', { userCount: users.length, sentCount })
+        ctx.t('main-broadcast-finished', {
+          userCount: users.length,
+          sentCount: i,
+        })
       )
     }
+    i++
   }
+  await ctx.api.editMessageText(
+    ctx.chat.id,
+    started.message_id,
+    ctx.t('main-broadcast-finished', {
+      userCount: users.length,
+      sentCount: sentCount,
+    })
+  )
   await ctx.reply('🏁')
 })
 export function showLangs(ctx: MyContext) {
