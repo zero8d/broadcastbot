@@ -21,6 +21,7 @@ bot.use(i18n)
 bot.use(handler)
 bot.use(accessControl)
 bot.use(router)
+bot.catch(console.error)
 bot.start({
   onStart: () => {
     logger.info(`https://t.me/${bot.botInfo.username} has been started`)
