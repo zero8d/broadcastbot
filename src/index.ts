@@ -12,7 +12,7 @@ import accessControl from './middlewares/accessControl'
 import { autoRetry } from '@grammyjs/auto-retry'
 
 export type MyContext = Context & SessionFlavor<SessionData> & I18nFlavor
-const bot = new Bot<MyContext>(<string>process.env.BOTTOKEN)
+const bot = new Bot<MyContext>(<string>process.env.BOT_TOKEN)
 connectMongoDB()
 
 bot.api.config.use(autoRetry())
