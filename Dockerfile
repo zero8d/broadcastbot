@@ -4,7 +4,7 @@ FROM oven/bun:1
 WORKDIR /usr/src/app
 
 # Install dependencies first (cached separately)
-COPY package.json bun.lock ./
+COPY package.json bun.lock locales ./
 RUN bun install --frozen-lockfile
 
 # Copy the application source code
