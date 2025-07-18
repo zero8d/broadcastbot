@@ -8,7 +8,7 @@ COPY package.json bun.lock locales ./
 RUN bun install --frozen-lockfile
 
 # Copy the application source code
-COPY src ./src
+COPY src locales ./src
 
 # Expose port
 EXPOSE 5001
